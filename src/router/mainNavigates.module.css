@@ -1,0 +1,23 @@
+.hover {
+	position: relative;
+}
+
+.hover::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background-color: red;
+	bottom: 0;
+	right: 0;
+	transform: scaleX(0);
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+.hover:hover::after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+.select a::after {
+	transform: scaleX(1);
+}

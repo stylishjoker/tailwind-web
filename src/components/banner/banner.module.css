@@ -1,0 +1,19 @@
+.span {
+	color: white;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: capitalize;
+	margin: 10px;
+}
+.toHome {
+	background-position: -143px -771px;
+	width: 27px;
+	height: 23px;
+	margin-right: 5px;
+}
+.pickUp {
+	background-position: -190px -771px;
+	width: 27px;
+	height: 25px;
+	margin-right: 5px;
+}
