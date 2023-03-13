@@ -1,7 +1,26 @@
-import classes from './banner.module.css';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import classes from './banner.module.css';
+
+import { setScrollBtn } from '../../feature/scrollBtn';
 
 const Banner = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const position = window.scrollY;
+			dispatch(setScrollBtn(position));
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 	return (
 		<div className="center_row p-3 justify-center bg-[#202124]">
 			<span className={classes.span}>đặt ngay</span>

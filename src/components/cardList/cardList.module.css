@@ -1,4 +1,35 @@
 .wrapper {
-	min-height: 223px;
-	width: 25%;
+	min-height: 272px;
+	width: 24%;
+	margin: 5px;
+	overflow: hidden;
+	border-radius: 0.35714286rem;
+}
+.wrapper a {
+	display: block;
+	position: relative;
+}
+.wrapper a span {
+	position: absolute;
+	display: block;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	bottom: -45px;
+	left: 0;
+	z-index: -1;
+}
+.wrapper figure {
+	background: #fff;
+	overflow: hidden;
+}
+.wrapper a img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: 0.7s ease-in-out;
+	transition: 0.7s ease-in-out;
+}
+.wrapper:hover img {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
 }

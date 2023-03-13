@@ -19,3 +19,10 @@
 	position: relative;
 	padding: 0 10px;
 }
+.avatar {
+	background-position: -10px -805px;
+	height: 77px;
+	width: 41px;
+	position: relative;
+	background-color: white;
+}
