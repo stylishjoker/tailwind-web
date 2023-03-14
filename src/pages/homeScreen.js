@@ -43,6 +43,11 @@ const HomeScreen = () => {
 						))}
 					</LayoutList>
 				</div>
+				<img
+					className="w-100"
+					src="https://static.kfcvietnam.com.vn/images/content/home/mobileappbanner/lg/banner.jpg?v=L7wjKL"
+					alt="kfc"
+				/>
 			</LayoutPanes>
 		</>
 	);

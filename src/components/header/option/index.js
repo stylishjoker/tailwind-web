@@ -7,7 +7,7 @@ import LogoMenu from '../../../assets/icon/logoMenu';
 
 import { scrollBtnSelector } from '../../../app/store';
 
-const Option = () => {
+const Option = (props) => {
 	const scrollPosition = useSelector(scrollBtnSelector);
 	return (
 		<div className="center_row cursor-pointer space-x-4">
@@ -20,7 +20,9 @@ const Option = () => {
 			</Link>
 			<LogoUser />
 			<Link to={'/cart'} className={`${classes.cart}` + ` logo_cart`}></Link>
-			<LogoMenu />
+			<div onClick={props.callback}>
+				<LogoMenu />
+			</div>
 		</div>
 	);
 };

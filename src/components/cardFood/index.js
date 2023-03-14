@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import classes from './cardFood.module.css';
 
 const CardFood = (props) => {
-	console.log(props.data);
 	const { name, price, id, link, description } = props.data;
 	return (
 		<div className={classes.wrapper + ' shadow-btn center_col'}>
@@ -20,7 +19,9 @@ const CardFood = (props) => {
 					</div>
 					<span>{description}</span>
 				</div>
-				<button className="bg-[#ccc] p-3 shadow-btn">Thêm</button>
+				<button className="bg-[#ccc] p-3 shadow-btn text-white text-sm font-semibold">
+					Thêm
+				</button>
 			</Link>
 		</div>
 	);

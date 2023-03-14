@@ -3,6 +3,11 @@ import KhuyenMai from '../pages/khuyen-mai';
 import MenuScreen from '../pages/menuScreen';
 import HeThongNhaHang from '../pages/he-thong-nha-hang';
 
+import Youtube from '../assets/icon/youtube';
+import Twitter from '../assets/icon/twitter';
+import Instagram from '../assets/icon/instagram';
+import Facebook from '../assets/icon/facebook';
+
 const ObjectNavigates = [
 	{
 		id: 1,
@@ -103,5 +108,22 @@ export const ListFooter = [
 		],
 	},
 ];
-
+export const Logos = [
+	{
+		component: Facebook,
+		link: 'https://www.facebook.com/KFCVietnam/',
+	},
+	{
+		component: Instagram,
+		link: 'https://www.instagram.com/kfc_vietnam/',
+	},
+	{
+		component: Youtube,
+		link: 'https://www.youtube.com/user/KFCVietnam2011',
+	},
+	{
+		component: Twitter,
+		link: 'https://twitter.com/kfc_vietnam',
+	},
+];
 export default ObjectNavigates;
