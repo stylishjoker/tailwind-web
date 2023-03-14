@@ -1,3 +1,4 @@
+import Footer from '../../components/footer';
 import Header from '../../components/header';
 
 function DefaultLayout({ children }) {
@@ -5,6 +6,7 @@ function DefaultLayout({ children }) {
 		<div>
 			<Header />
 			<div>{children}</div>
+			<Footer />
 		</div>
 	);
 }
