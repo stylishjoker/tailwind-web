@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import classes from './menu.module.css';
 import { ListFooter } from '../../../router';
+import ListLogo from '../../ListLogo';
 
 const Menu = (props) => {
 	const show = props.data;
@@ -12,12 +13,14 @@ const Menu = (props) => {
 				' transition-menu ' +
 				classes.wrapper
 			}>
-			<div className={classes.header}>
-				<span className={classes.close} onClick={props.callback}>
-					&times;
-				</span>
+			<div className="fixed w-[350px] bg-white z-10">
+				<div className={classes.header}>
+					<span className={classes.close} onClick={props.callback}>
+						&times;
+					</span>
+				</div>
 			</div>
-			<div className="">
+			<div className="pt-[40px]">
 				{ListFooter.map((item, index) => {
 					return (
 						<div key={index} className="p-5 ">
@@ -34,6 +37,10 @@ const Menu = (props) => {
 						</div>
 					);
 				})}
+			</div>
+			<div className={classes.footer + ' center_col p-10'}>
+				<ListLogo />
+				<span>Copyright © 2023 KFC Vietnam</span>
 			</div>
 		</div>
 	);

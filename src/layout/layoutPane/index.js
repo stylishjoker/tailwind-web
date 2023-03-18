@@ -2,7 +2,7 @@ import Banner from '../../components/banner';
 
 const LayoutPanes = ({ children }) => {
 	return (
-		<div className="pt-[110px]">
+		<div className="md:pt-[110px] xsm:pt-[74px]">
 			<Banner />
 			<div>{children}</div>
 		</div>

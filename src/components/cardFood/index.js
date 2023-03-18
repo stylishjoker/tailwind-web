@@ -4,22 +4,24 @@ import classes from './cardFood.module.css';
 const CardFood = (props) => {
 	const { name, price, id, link, description } = props.data;
 	return (
-		<div className={classes.wrapper + ' shadow-btn center_col'}>
-			<Link to={'/' + id}>
-				<figure>
-					<img src={link} alt="" />
-				</figure>
-				<div className={classes.infoItem}>
-					<div className={classes.detail_title + ' center_row'}>
-						<span>{name}</span>
-						<span>
-							{price}
-							{'₫'}
-						</span>
+		<div className={classes.wrapper + ' shadow-btn'}>
+			<Link to={'/' + id} className="flex flex-col">
+				<div className="flex sm:flex-row md:flex-col">
+					<figure>
+						<img src={link} alt="" />
+					</figure>
+					<div className={classes.infoItem}>
+						<div className={classes.detail_title + ' center_row'}>
+							<span>{name}</span>
+							<span>
+								{price}
+								{'₫'}
+							</span>
+						</div>
+						<span>{description}</span>
 					</div>
-					<span>{description}</span>
 				</div>
-				<button className="bg-[#ccc] p-3 shadow-btn text-white text-sm font-semibold">
+				<button className="bg-[#ccc] lg:p-3 md:p-0 shadow-btn text-white lg:text-sm font-semibold md:text-xs">
 					Thêm
 				</button>
 			</Link>

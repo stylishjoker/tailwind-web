@@ -1,6 +1,6 @@
 .wrapper {
-	min-width: 300px;
-	width: 24%;
+	/* min-width: 300px; */
+	/* width: 24%; */
 	margin: 5px;
 	overflow: hidden;
 	border-radius: 0.35714286rem;
@@ -8,7 +8,7 @@
 	justify-content: center;
 }
 .wrapper a {
-	display: block;
+	/* display: block; */
 	position: relative;
 	height: 100%;
 }
@@ -33,7 +33,8 @@
 	left: 0;
 	z-index: -1;
 	width: 100%;
-	min-height: 150px;
+	min-height: 200px;
+	height: 150px;
 }
 .detail_title {
 	justify-content: space-between;
@@ -50,10 +51,4 @@
 	text-transform: capitalize;
 	color: #999;
 	text-align: justify;
-}
-.wrapper a button {
-	width: 90%;
-	margin: 10px auto;
-	display: block;
-	border-radius: 25px;
 }

@@ -1,16 +1,18 @@
 .wrapper {
-	min-height: 272px;
-	width: 24%;
+	/* min-height: 272px; */
+	/* width: 100%; */
 	margin: 5px;
 	overflow: hidden;
 	border-radius: 0.35714286rem;
+	display: block;
+	/* min-width: 300px; */
 }
 .wrapper a {
-	display: block;
-	position: relative;
+	display: contents;
+	/* position: relative; */
 }
 .wrapper a span {
-	position: absolute;
+	/* position: absolute; */
 	display: block;
 	padding: 10px;
 	font-size: 16px;

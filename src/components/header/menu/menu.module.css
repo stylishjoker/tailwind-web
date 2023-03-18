@@ -6,14 +6,16 @@
 	width: 350px;
 	height: 100vh;
 	z-index: 10;
+	overflow-x: hidden;
 }
 .header {
 	position: relative;
 	align-items: center;
 	display: flex;
-	justify-content: end;
+	/* justify-content: end; */
 	border-bottom: 1px solid #999;
 }
+
 .header::before {
 	content: '';
 	position: absolute;
@@ -29,4 +31,27 @@
 	text-align: end;
 	margin-right: 10px;
 	cursor: pointer;
+}
+/* "bg-[#202124] text-[#ababab] center_col" */
+.footer {
+	background-color: #202124;
+	color: #ababab;
+	font-size: 14px;
+	position: relative;
+}
+.footer::before {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 30px;
+	box-shadow: inset 0 0 0 32px white, -22px 0 white, 22px 0 white;
+	right: 50%;
+	bottom: 0;
+}
+.footer span {
+	display: block;
+	margin-top: 10px;
+	position: relative;
+	border-top: 1px solid white;
+	padding-top: 10px;
 }

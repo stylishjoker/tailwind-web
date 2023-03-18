@@ -1,3 +1,5 @@
+import Slider from 'react-slick';
+
 import { useEffect, useState } from 'react';
 
 import CardList from '../components/cardList';
@@ -7,6 +9,7 @@ import LayoutPanes from '../layout/layoutPane';
 import classes from './homeScreen.module.css';
 import LayoutList from '../layout/layoutList';
 import CardFood from '../components/cardFood';
+import LayoutFood from '../layout/layoutFood';
 
 const HomeScreen = () => {
 	const [food, setFood] = useState([]);
@@ -26,7 +29,9 @@ const HomeScreen = () => {
 				<Sliders />
 				<div className="container  p-9 m-auto">
 					<h2 className={classes.title}>
-						<span>Danh mục món ăn</span>
+						<span className=" lg:text-[28px] xsm:text-[20px]">
+							Danh mục món ăn
+						</span>
 					</h2>
 					<LayoutList>
 						{food.map((item) => (
@@ -35,13 +40,15 @@ const HomeScreen = () => {
 					</LayoutList>
 					<h2 className={classes.title + ' mt-10'}>
 						<div className={'list_logo ' + classes.avatar}></div>
-						<span>CÓ THỂ BẠN SẼ THÍCH MÓN NÀY</span>
+						<span className="lg:text-[28px] xsm:text-[20px]">
+							CÓ THỂ BẠN SẼ THÍCH MÓN NÀY
+						</span>
 					</h2>
-					<LayoutList>
+					<LayoutFood>
 						{combo.map((item) => (
 							<CardFood data={item} />
 						))}
-					</LayoutList>
+					</LayoutFood>
 				</div>
 				<img
 					className="w-100"

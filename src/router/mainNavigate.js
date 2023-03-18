@@ -9,7 +9,7 @@ const MainNavigates = () => {
 	const [selected, setSelected] = useState(1);
 	return (
 		<>
-			<ul className="flex  items-center flex-row spacing-4">
+			<ul className="items-center flex-row xsm:hidden md:flex">
 				{ObjectNavigates.map((item) => {
 					if (item.id === 1) {
 						return (
@@ -25,7 +25,7 @@ const MainNavigates = () => {
 								key={item.id}
 								onClick={() => setSelected(item.id)}
 								className={
-									`ml-6 uppercase font-bold text-lg` +
+									`lg:ml-6 uppercase font-bold lg:text-lg md:text-sm md:ml-2 ` +
 									` ${item.id === selected ? classes.select : ''} `
 								}>
 								<Link className={classes.hover} to={item.path}>

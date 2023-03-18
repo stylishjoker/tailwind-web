@@ -60,6 +60,8 @@ body {
 }
 img {
 	vertical-align: middle;
+	object-fit: cover;
+	width: 100%;
 }
 .animated-button {
 	visibility: hidden;
