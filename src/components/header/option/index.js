@@ -12,6 +12,7 @@ const Option = (props) => {
 	return (
 		<div className="center_row cursor-pointer space-x-4 ">
 			<Link
+				to="/store-selection"
 				className={
 					(scrollPosition > 180
 						? 'lg:block 2xl:block xl:block md:block xsm:hidden '

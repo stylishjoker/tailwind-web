@@ -1,0 +1,82 @@
+.wrapper {
+	background: url(https://raw.githubusercontent.com/stylishjoker/kfc-image/master/background/localization-bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 500px;
+}
+.content {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	height: 200px;
+	background-color: white;
+}
+.wrapper a {
+	cursor: pointer;
+	background-color: #e4002b;
+	color: white;
+	width: 90%;
+	text-align: center;
+	border-radius: 25px;
+	padding: 10px;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+		0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	font-size: 16px;
+	font-weight: 600;
+	border: 1px solid #e4002b;
+	margin-bottom: 10px;
+}
+.select {
+	padding: 4px;
+	position: relative;
+	box-shadow: 3px -4px 4px 0 rgba(0, 0, 0, 0.1);
+	font-size: 18px;
+	background-color: white;
+}
+.select::before {
+	content: '';
+	position: absolute;
+	background-color: white;
+	height: 10px;
+	width: 100%;
+	left: 0;
+	top: -10px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.notSelect {
+	background-color: #cacaca;
+	font-size: 15px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+.wrapper ul {
+	position: relative;
+	align-items: flex-end !important;
+}
+.wrapper ul li {
+	width: 50%;
+	text-align: center;
+	color: #000;
+	font-weight: 700;
+	font-family: Oswald, sans-serif;
+	text-transform: uppercase;
+	height: 100%;
+	padding: 10px;
+	letter-spacing: -1px;
+}
+.location {
+	width: 100%;
+}
+.inputLocal {
+	position: relative;
+	width: 100%;
+}
+.inputLocal input {
+	position: absolute;
+	outline: 1px solid #333;
+	margin-top: 10px;
+}
+.inputLocal input:hover {
+	outline: 2px solid #333;
+	overflow: hidden;
+}

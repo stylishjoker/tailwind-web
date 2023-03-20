@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import scrollBtn from '../feature/scrollBtn';
+import Operate from '../feature/operate';
 
 export const store = configureStore({
 	reducer: {
-		scrollBtn,
+		Operate,
 	},
 });
 
-export const scrollBtnSelector = (state) => state.scrollBtn.index;
+export const scrollBtnSelector = (state) => state.Operate.index;
+export const locationSelector = (state) => state.Operate.location;

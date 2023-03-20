@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import classes from './banner.module.css';
 
-import { setScrollBtn } from '../../feature/scrollBtn';
+import { setScrollBtn } from '../../feature/operate';
 
 const Banner = () => {
 	const dispatch = useDispatch();
@@ -31,7 +31,9 @@ const Banner = () => {
 				<span className={classes.span}>hoặc mang đi</span>
 			</div>
 			<div className="block xsm:w-[100%] text-center xsm:mt-2 md:w-max lg:mt-0">
-				<Link className="shadow-btn bg-[#e4002b] rounded-full px-6 py-3 text-btn block">
+				<Link
+					to="/store-selection"
+					className="shadow-btn bg-[#e4002b] rounded-full px-6 py-3 text-btn block">
 					Bắt đầu đặt hàng
 				</Link>
 			</div>

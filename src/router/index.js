@@ -2,6 +2,7 @@ import HomeScreen from '../pages/homeScreen';
 import KhuyenMai from '../pages/khuyen-mai';
 import MenuScreen from '../pages/menuScreen';
 import HeThongNhaHang from '../pages/he-thong-nha-hang';
+import StoreSelection from '../pages/store-selection';
 
 import Youtube from '../assets/icon/youtube';
 import Twitter from '../assets/icon/twitter';
@@ -32,6 +33,11 @@ const ObjectNavigates = [
 		path: '/he-thong-nha-hang',
 		name: 'Hệ thống cửa hàng',
 		component: HeThongNhaHang,
+	},
+	{
+		id: 5,
+		path: '/store-selection',
+		component: StoreSelection,
 	},
 ];
 

@@ -1,5 +1,3 @@
-import Slider from 'react-slick';
-
 import { useEffect, useState } from 'react';
 
 import CardList from '../components/cardList';
@@ -19,7 +17,6 @@ const HomeScreen = () => {
 		setFood(await getData('DanhMucMonAn'));
 		setCombo(await getData('favoriteList'));
 	};
-
 	useEffect(() => {
 		fetchData();
 	}, []);
