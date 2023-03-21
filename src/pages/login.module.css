@@ -1,0 +1,53 @@
+.banner {
+	background-size: cover;
+	background-color: #e2002b;
+}
+.banner,
+.content {
+	width: 50%;
+	height: 100vh;
+}
+.content {
+	flex: 0 0 55%;
+	padding: 40px;
+}
+
+.content h1 {
+	font-size: 28px;
+	font-weight: 700;
+	text-shadow: none;
+}
+
+.form {
+	min-height: 75px;
+	width: 80%;
+}
+.fromGroup {
+	position: relative;
+	border-bottom: 1px solid #333;
+	margin-top: 30px;
+	line-height: 1.125;
+	letter-spacing: normal;
+}
+.fromGroup input {
+	outline: none;
+	width: 100%;
+	padding: 10px 0;
+}
+.fromGroup input:focus ~ span {
+	transform: translateY(-20px);
+	font-size: 10px;
+}
+.fromGroup span {
+	color: currentColor;
+	position: absolute;
+	left: 0;
+	font-size: 15px;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	display: block;
+	pointer-events: none;
+	top: 11px;
+	transition: 0.5s;
+}
