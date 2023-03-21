@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import classes from './store-selection.module.css';
 import { getLocation } from '../api';
+import { setLocation } from '../feature/operate';
 
 const StoreSelection = () => {
+	const dispacth = useDispatch();
 	const [show, setShow] = useState(true);
+	const [error, setError] = useState('');
 
 	const handlePosition = async () => {
-		navigator.geolocation.getCurrentPosition(async (position) => {
-			const newPosition = {
-				lat: position.coords.latitude,
-				lon: position.coords.longitude,
-			};
-			const result = await getLocation(newPosition);
-			console.log(result);
-		});
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				async (position) => {
+					const newPosition = {
+						lat: position.coords.latitude,
+						lon: position.coords.longitude,
+					};
+					const result = await getLocation(newPosition);
+					dispacth(setLocation(result.name));
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
+		} else {
+			setError('Định vị không được sử dụng trong trang web này');
+		}
 	};
 	return (
 		<div
@@ -40,6 +53,7 @@ const StoreSelection = () => {
 					<a onClick={handlePosition} className="bg-red">
 						Sử dụng vị trí hiện tại của tôi &gt;
 					</a>
+					<span>{error}</span>
 					<div className={classes.inputLocal}>
 						<input
 							className={'p-4 w-[100%] ' + (show ? 'block' : 'hidden')}

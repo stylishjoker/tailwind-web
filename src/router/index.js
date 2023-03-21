@@ -3,6 +3,7 @@ import KhuyenMai from '../pages/khuyen-mai';
 import MenuScreen from '../pages/menuScreen';
 import HeThongNhaHang from '../pages/he-thong-nha-hang';
 import StoreSelection from '../pages/store-selection';
+import LoginScreen from '../pages/loginScreen';
 
 import Youtube from '../assets/icon/youtube';
 import Twitter from '../assets/icon/twitter';
@@ -38,6 +39,11 @@ const ObjectNavigates = [
 		id: 5,
 		path: '/store-selection',
 		component: StoreSelection,
+	},
+	{
+		id: 6,
+		path: '/login',
+		component: LoginScreen,
 	},
 ];
 
