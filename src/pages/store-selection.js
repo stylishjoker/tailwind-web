@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import classes from './store-selection.module.css';
 import { getLocation } from '../api';
 import { setLocation } from '../feature/operate';
+import { Link } from 'react-router-dom';
 
 const StoreSelection = () => {
 	const dispacth = useDispatch();
@@ -19,7 +20,8 @@ const StoreSelection = () => {
 						lon: position.coords.longitude,
 					};
 					const result = await getLocation(newPosition);
-					dispacth(setLocation(result.name));
+					const data = `${result.locality} ${result.city} ${result.countryName}`;
+					dispacth(setLocation(data));
 				},
 				(error) => {
 					console.log(error);
@@ -50,9 +52,9 @@ const StoreSelection = () => {
 					</li>
 				</ul>
 				<div className={'center_col p-6 ' + classes.location}>
-					<a onClick={handlePosition} className="bg-red">
+					<Link to={'/menuScreen'} onClick={handlePosition} className="bg-red">
 						Sử dụng vị trí hiện tại của tôi &gt;
-					</a>
+					</Link>
 					<span>{error}</span>
 					<div className={classes.inputLocal}>
 						<input

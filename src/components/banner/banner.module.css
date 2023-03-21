@@ -17,3 +17,22 @@
 	height: 25px;
 	margin-right: 5px;
 }
+.local {
+	position: relative;
+}
+.local::before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	background: url(https://kfcvn-static.cognizantorderserv.com/images/web/sprite.png?v=5.0)
+		no-repeat -48px -166px;
+	width: 22px;
+	height: 16px;
+	left: -17px;
+	bottom: 3px;
+}
+.local span {
+	font-size: 14px;
+	font-weight: 600;
+}

@@ -1,26 +1,36 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import classes from './banner.module.css';
-
+import { locationSelector } from '../../app/store';
 import { setScrollBtn } from '../../feature/operate';
 
 const Banner = () => {
 	const dispatch = useDispatch();
-
+	const location = useSelector(locationSelector);
+	const handleScroll = () => {
+		const position = window.scrollY;
+		dispatch(setScrollBtn(position));
+	};
 	useEffect(() => {
-		const handleScroll = () => {
-			const position = window.scrollY;
-			dispatch(setScrollBtn(position));
-		};
-
-		window.addEventListener('scroll', handleScroll);
+		if (!location) {
+			window.addEventListener('scroll', handleScroll);
+		}
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+	if (location) {
+		return (
+			<div className="center_row p-3 justify-center bg-[#202124] xsm:flex-col xsm:fixed xsm:w-[100%] xsm:z-10  md:z-2 xsm:bottom-0 md:flex-row md:relative">
+				<div className={classes.local}>
+					<span className="text-white">{location}</span>
+				</div>
+			</div>
+		);
+	}
 	return (
 		<div className="center_row p-3 justify-center bg-[#202124] xsm:flex-col xsm:fixed xsm:w-[100%] xsm:z-10  md:z-2 xsm:bottom-0 md:flex-row md:relative">
 			<div>
