@@ -28,8 +28,10 @@ const Menu = (props) => {
 								{item.name}
 							</span>
 							<ul className="border-b-[1px] border-[#999] pb-4">
-								{item.options.map((item) => (
-									<li className="text-hover text-sm text-[#333] p-[2px]">
+								{item.options.map((item, index) => (
+									<li
+										key={index}
+										className="text-hover text-sm text-[#333] p-[2px]">
 										<Link to={item.path}>{item.nameOption} &raquo;</Link>
 									</li>
 								))}

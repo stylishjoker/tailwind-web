@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import classes from './newButton.module.css';
 
 const NewButton = (props) => {
-	console.log(props);
 	const { color, bg, text, link, callback, border } = props;
 	if (link) {
 		<div className={classes.wrapper + ` ${bg} ${color} ${border}`}>

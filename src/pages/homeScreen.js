@@ -31,8 +31,8 @@ const HomeScreen = () => {
 						</span>
 					</h2>
 					<LayoutList>
-						{food.map((item) => (
-							<CardList data={item} />
+						{food.map((item, index) => (
+							<CardList key={index} data={item} />
 						))}
 					</LayoutList>
 					<h2 className={classes.title + ' mt-10'}>
@@ -42,8 +42,8 @@ const HomeScreen = () => {
 						</span>
 					</h2>
 					<LayoutFood>
-						{combo.map((item) => (
-							<CardFood data={item} />
+						{combo.map((item, index) => (
+							<CardFood key={index} data={item} />
 						))}
 					</LayoutFood>
 				</div>

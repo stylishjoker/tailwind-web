@@ -7,7 +7,7 @@ import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
 import { handleLogin } from '../firebase';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 	const [show, setShow] = useState(false);
 	const [user, setUser] = useState();
 	const accountRef = useRef();
@@ -37,6 +37,14 @@ const LoginScreen = () => {
 					<form className={classes.form}>
 						<div className={classes.fromGroup} onClick={() => setShow(!show)}>
 							<input type="text" ref={accountRef} required />
+							<span className={classes.lable}>Họ và tên</span>
+						</div>
+						<div className={classes.fromGroup}>
+							<input type="password" ref={passwordRef} required />
+							<span className={classes.lable}>Số điện thoại</span>
+						</div>
+						<div className={classes.fromGroup}>
+							<input type="password" ref={passwordRef} required />
 							<span className={classes.lable}>Địa chỉ email của bạn</span>
 						</div>
 						<div className={classes.fromGroup}>
@@ -45,29 +53,11 @@ const LoginScreen = () => {
 						</div>
 						<div className="w-[100%]">
 							<NewButton
-								text="Đăng nhập"
-								bg="bg-emerald-500"
+								text="Tạo tài khoản"
+								bg="bg-red-600"
 								color="text-white"
 								callback={Login}
 							/>
-							<div className="mt-[20px] text-[14px]">
-								<h5>Hoặc tiếp tục với</h5>
-							</div>
-							<div className="w-[100%] relative overflow-hidden pb-[10px]">
-								<ReactFacebookLogin
-									appId="1295307291063299"
-									onClick={componentClick}
-									fields="name,email,accessToken,id,picture"
-									textButton="Đăng nhập bằng facebook"
-									cssClass={classes.facebook}
-								/>
-								<i className={classes.iconFB}></i>
-							</div>
-						</div>
-						<div className="center_col">
-							<p className={classes.register}>
-								Bạn chưa có tài khoản? <Link to="/register">Đăng ký</Link>
-							</p>
 						</div>
 					</form>
 				</div>
@@ -75,4 +65,4 @@ const LoginScreen = () => {
 		</LayoutPanes>
 	);
 };
-export default LoginScreen;
+export default RegisterScreen;

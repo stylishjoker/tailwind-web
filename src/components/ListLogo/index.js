@@ -7,6 +7,7 @@ const ListLogo = () => {
 				const Icon = item.component;
 				return (
 					<a
+						key={index}
 						href={item.link}
 						className="block border-[#333] rounded-[25px] m-2 bg-white hover:animate-icon-spin hover:border-slate-400">
 						<Icon />

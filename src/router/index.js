@@ -9,6 +9,7 @@ import Youtube from '../assets/icon/youtube';
 import Twitter from '../assets/icon/twitter';
 import Instagram from '../assets/icon/instagram';
 import Facebook from '../assets/icon/facebook';
+import RegisterScreen from '../pages/registerScreen';
 
 const ObjectNavigates = [
 	{
@@ -44,6 +45,11 @@ const ObjectNavigates = [
 		id: 6,
 		path: '/login',
 		component: LoginScreen,
+	},
+	{
+		id: 7,
+		path: '/register',
+		component: RegisterScreen,
 	},
 ];
 

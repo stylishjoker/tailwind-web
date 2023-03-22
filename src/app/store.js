@@ -14,10 +14,4 @@ export const store = configureStore({
 export const scrollBtnSelector = (state) => state.Operate.index;
 export const locationSelector = (state) => state.Operate.location;
 // user
-export const idSelector = (state) => state.User.id;
-export const tokenSelector = (state) => state.User.token;
-export const nameSelector = (state) => state.User.name;
-export const adressSelector = (state) => state.User.adress;
-export const emailSelector = (state) => state.User.email;
-export const numberPhoneSelector = (state) => state.User.numberPhone;
-export const passwordSelector = (state) => state.User.password;
+export const userSelector = (state) => state.User.user;

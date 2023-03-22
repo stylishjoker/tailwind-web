@@ -5,11 +5,11 @@ import LogoUser from '../../../assets/icon/logoUser';
 import classes from './option.module.css';
 import LogoMenu from '../../../assets/icon/logoMenu';
 
-import { scrollBtnSelector, tokenSelector } from '../../../app/store';
+import { scrollBtnSelector, userSelector } from '../../../app/store';
 
 const Option = (props) => {
 	const scrollPosition = useSelector(scrollBtnSelector);
-	const userToken = useSelector(tokenSelector);
+	const userToken = useSelector(userSelector);
 
 	return (
 		<div className="center_row cursor-pointer space-x-4 ">
@@ -23,7 +23,7 @@ const Option = (props) => {
 				}>
 				Bắt đầu đặt hàng
 			</Link>
-			<Link to={userToken ? '/user' : '/login'}>
+			<Link to={userToken.token ? '/user' : '/login'}>
 				<LogoUser />
 			</Link>
 			<Link to={'/cart'} className={`${classes.cart}` + ` logo_cart`}></Link>
