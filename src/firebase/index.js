@@ -1,10 +1,12 @@
 import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
+	updatePassword,
+	updateProfile,
+} from 'firebase/auth';
 
-import { auth } from './firebase';
-
-import { db } from './firebase';
+import { auth, db } from './firebase';
 
 export const getData = async (name) => {
 	let newData;
@@ -50,5 +52,33 @@ export const handleLogin = async (data) => {
 	return users.user;
 };
 export const handleRegister = async (data) => {
-	await createUserWithEmailAndPassword(auth, data);
+	let value;
+	await createUserWithEmailAndPassword(auth, data.email, data.password)
+		.then((userCredential) => {
+			// Signed in
+			value = {
+				user: userCredential.user,
+			};
+			// ...
+		})
+		.catch((error) => {
+			value = {
+				errorCode: error.code,
+				errorMessage: error.message,
+			};
+			// ..
+		});
+	return value;
+};
+export const handlePassword = (data) => {
+	var value = '';
+	updatePassword(data.email, data.newPassword)
+		.then(() => {
+			value = 'Thay đổi mật khẩu thành công';
+		})
+		.catch((error) => {
+			value = 'Thay đổi không thành công';
+		});
+
+	return value;
 };

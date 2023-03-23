@@ -5,24 +5,33 @@ import { Link } from 'react-router-dom';
 import classes from './login.module.css';
 import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
-import { handleLogin } from '../firebase';
+import { handleRegister } from '../firebase';
 
 const RegisterScreen = () => {
 	const [show, setShow] = useState(false);
-	const [user, setUser] = useState();
+	const [user, setUser] = useState(false);
+	const [error, setError] = useState('');
+
 	const accountRef = useRef();
 	const passwordRef = useRef();
+	const confirmPasswordRef = useRef();
 
 	const componentClick = (data) => {};
 	const Login = async () => {
-		const newData = {
-			email: accountRef.current.value,
-			password: passwordRef.current.value,
-		};
-		const userrr = await handleLogin(newData);
-		setUser(userrr);
+		if (passwordRef.current.value == confirmPasswordRef.current.value) {
+			const newData = {
+				email: accountRef.current.value,
+				password: passwordRef.current.value,
+			};
+			const value = await handleRegister(newData);
+			if (value.user) {
+				console.log(value.user);
+			}
+		} else {
+			console.log('hehe');
+			setError('Mật khẩu nhập lại không chính xác');
+		}
 	};
-	console.log(user);
 	return (
 		<LayoutPanes>
 			<div className="container flex m-auto h-[100vh]">
@@ -33,23 +42,19 @@ const RegisterScreen = () => {
 					/>
 				</div>
 				<div className={classes.content}>
-					<h1>Đăng nhập</h1>
+					<h1>Đăng Ký</h1>
 					<form className={classes.form}>
-						<div className={classes.fromGroup} onClick={() => setShow(!show)}>
-							<input type="text" ref={accountRef} required />
-							<span className={classes.lable}>Họ và tên</span>
-						</div>
 						<div className={classes.fromGroup}>
-							<input type="password" ref={passwordRef} required />
-							<span className={classes.lable}>Số điện thoại</span>
-						</div>
-						<div className={classes.fromGroup}>
-							<input type="password" ref={passwordRef} required />
+							<input type="email" ref={accountRef} required />
 							<span className={classes.lable}>Địa chỉ email của bạn</span>
 						</div>
 						<div className={classes.fromGroup}>
 							<input type="password" ref={passwordRef} required />
 							<span className={classes.lable}>Mật khẩu</span>
+						</div>
+						<div className={classes.fromGroup}>
+							<input type="password" ref={confirmPasswordRef} required />
+							<span className={classes.lable}>Nhập lại mật khẩu</span>
 						</div>
 						<div className="w-[100%]">
 							<NewButton
@@ -60,6 +65,7 @@ const RegisterScreen = () => {
 							/>
 						</div>
 					</form>
+					{error ? <span>{error}</span> : <></>}
 				</div>
 			</div>
 		</LayoutPanes>
