@@ -6,23 +6,30 @@ import classes from './login.module.css';
 import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
 import { handleLogin } from '../firebase';
+import { isPassword, isEmail } from '../validation';
 
 const LoginScreen = () => {
 	const [show, setShow] = useState(false);
 	const [user, setUser] = useState();
-	const accountRef = useRef();
-	const passwordRef = useRef();
-
+	const [errorEmail, setErrorEmail] = useState();
+	const [errorPassword, setErrorPassword] = useState();
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
 	const componentClick = (data) => {};
 	const Login = async () => {
 		const newData = {
-			email: accountRef.current.value,
-			password: passwordRef.current.value,
+			email: email,
+			password: password,
 		};
 		const userrr = await handleLogin(newData);
 		setUser(userrr);
 	};
-	console.log(user);
+	const blurCheckEmail = () => {
+		setErrorEmail(isEmail(email));
+	};
+	const blurCheckPassword = () => {
+		setErrorPassword(isPassword(password));
+	};
 	return (
 		<LayoutPanes>
 			<div className="container flex m-auto h-[100vh]">
@@ -35,14 +42,54 @@ const LoginScreen = () => {
 				<div className={classes.content}>
 					<h1>Đăng nhập</h1>
 					<form className={classes.form}>
-						<div className={classes.fromGroup} onClick={() => setShow(!show)}>
-							<input type="text" ref={accountRef} required />
+						<div
+							className={
+								classes.fromGroup +
+								(errorEmail
+									? ' border-b border-red-500'
+									: ' border-b border-[#333]')
+							}
+							onClick={() => setShow(!show)}>
+							<input
+								type="text"
+								value={email}
+								onBlur={blurCheckEmail}
+								onChange={(text) => setEmail(text.target.value)}
+								required
+							/>
 							<span className={classes.lable}>Địa chỉ email của bạn</span>
+							{errorEmail ? (
+								<p className="absolute text-xs mt-[3px] text-[red]">
+									{errorEmail}
+								</p>
+							) : (
+								<></>
+							)}
 						</div>
-						<div className={classes.fromGroup}>
-							<input type="password" ref={passwordRef} required />
+						<div
+							className={
+								classes.fromGroup +
+								(errorPassword
+									? ' border-b border-red-500'
+									: ' border-b border-[#333]')
+							}>
+							<input
+								onBlur={blurCheckPassword}
+								type="password"
+								value={password}
+								onChange={(text) => setPassword(text.target.value)}
+								required
+							/>
 							<span className={classes.lable}>Mật khẩu</span>
+							{errorPassword ? (
+								<p className="absolute text-xs mt-[3px] text-[red]">
+									{errorPassword}
+								</p>
+							) : (
+								<></>
+							)}
 						</div>
+						<p className="mt-[25px] text-right">Bạn quên mật khẩu ?</p>
 						<div className="w-[100%]">
 							<NewButton
 								text="Đăng nhập"
