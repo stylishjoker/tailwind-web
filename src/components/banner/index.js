@@ -13,7 +13,6 @@ const Banner = () => {
 		const position = window.scrollY;
 		dispatch(setScrollBtn(position));
 	};
-	console.log(location);
 	useEffect(() => {
 		if (!location) {
 			window.addEventListener('scroll', handleScroll);

@@ -28,7 +28,6 @@ const RegisterScreen = () => {
 				console.log(value.user);
 			}
 		} else {
-			console.log('hehe');
 			setError('Mật khẩu nhập lại không chính xác');
 		}
 	};

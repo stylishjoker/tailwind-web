@@ -10,11 +10,10 @@ import { isPassword, isEmail } from '../validation';
 
 const LoginScreen = () => {
 	const [show, setShow] = useState(false);
-	const [user, setUser] = useState();
-	const [errorEmail, setErrorEmail] = useState();
-	const [errorPassword, setErrorPassword] = useState();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [errorEmail, setErrorEmail] = useState();
+	const [errorPassword, setErrorPassword] = useState();
 	const componentClick = (data) => {};
 	const Login = async () => {
 		const newData = {
@@ -22,7 +21,6 @@ const LoginScreen = () => {
 			password: password,
 		};
 		const userrr = await handleLogin(newData);
-		setUser(userrr);
 	};
 	const blurCheckEmail = () => {
 		setErrorEmail(isEmail(email));
@@ -95,7 +93,11 @@ const LoginScreen = () => {
 								text="Đăng nhập"
 								bg="bg-emerald-500"
 								color="text-white"
-								callback={Login}
+								callback={
+									errorPassword || errorEmail
+										? () => console.log('hehe')
+										: Login
+								}
 							/>
 							<div className="mt-[20px] text-[14px]">
 								<h5>Hoặc tiếp tục với</h5>
