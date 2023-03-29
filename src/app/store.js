@@ -13,5 +13,6 @@ export const store = configureStore({
 // Operate
 export const scrollBtnSelector = (state) => state.Operate.index;
 export const locationSelector = (state) => state.Operate.location;
+export const toastSelector = (state) => state.Operate.toastMessage;
 // user
 export const userSelector = (state) => state.User.user;

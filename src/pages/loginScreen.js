@@ -1,36 +1,53 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import ReactFacebookLogin from 'react-facebook-login';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import classes from './login.module.css';
 import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
 import { handleLogin } from '../firebase';
 import { isPassword, isEmail } from '../validation';
+import { setUser } from '../feature/user';
+import { setToastMessage } from '../feature/operate';
 
 const LoginScreen = () => {
+	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [errorEmail, setErrorEmail] = useState();
 	const [errorPassword, setErrorPassword] = useState();
-	const componentClick = (data) => {};
+	const componentClick = (data) => {
+		dispatch(setUser(data));
+	};
 	const Login = async () => {
-		const newData = {
-			email: email,
-			password: password,
-		};
-		const userrr = await handleLogin(newData);
-	};
-	const blurCheckEmail = () => {
-		setErrorEmail(isEmail(email));
-	};
-	const blurCheckPassword = () => {
 		setErrorPassword(isPassword(password));
+		setErrorEmail(isEmail(email));
+		if (!errorEmail && !errorPassword) {
+			const newData = {
+				email: email,
+				password: password,
+			};
+			const user = await handleLogin(newData);
+			if (user) {
+				dispatch(setUser(user));
+				dispatch(
+					setToastMessage({ type: 'susses', title: 'Đăng nhập thành công' })
+				);
+			}
+			dispatch(
+				setToastMessage({
+					type: 'error',
+					title: 'Tài khoản hoặc mật khẩu không chính xác',
+				})
+			);
+		}
 	};
+
 	return (
 		<LayoutPanes>
-			<div className="container flex m-auto h-[100vh]">
+			<div className="container flex m-auto min-h-screen">
 				<div className={classes.banner}>
 					<img
 						src="https://static.kfcvietnam.com.vn/images/web/signin/lg/signin.jpg?v=gdZwJL"
@@ -51,7 +68,7 @@ const LoginScreen = () => {
 							<input
 								type="text"
 								value={email}
-								onBlur={blurCheckEmail}
+								onBlur={() => setErrorEmail(isEmail(email))}
 								onChange={(text) => setEmail(text.target.value)}
 								required
 							/>
@@ -72,7 +89,7 @@ const LoginScreen = () => {
 									: ' border-b border-[#333]')
 							}>
 							<input
-								onBlur={blurCheckPassword}
+								onBlur={() => setErrorPassword(isPassword(password))}
 								type="password"
 								value={password}
 								onChange={(text) => setPassword(text.target.value)}
@@ -93,11 +110,7 @@ const LoginScreen = () => {
 								text="Đăng nhập"
 								bg="bg-emerald-500"
 								color="text-white"
-								callback={
-									errorPassword || errorEmail
-										? () => console.log('hehe')
-										: Login
-								}
+								callback={Login}
 							/>
 							<div className="mt-[20px] text-[14px]">
 								<h5>Hoặc tiếp tục với</h5>
