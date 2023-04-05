@@ -6,9 +6,9 @@ function DefaultLayout({ children }) {
 	return (
 		<div className="relative">
 			<Header />
-			<div>{children}</div>
+			<div className="min-h-screen">{children}</div>
 			<Footer />
-			<ToastMessage />
+			{/* <ToastMessage /> */}
 		</div>
 	);
 }

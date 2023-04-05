@@ -4,6 +4,7 @@ import MenuScreen from '../pages/menuScreen';
 import HeThongNhaHang from '../pages/he-thong-nha-hang';
 import StoreSelection from '../pages/store-selection';
 import LoginScreen from '../pages/loginScreen';
+import Cart from '../pages/cart';
 
 import Youtube from '../assets/icon/youtube';
 import Twitter from '../assets/icon/twitter';
@@ -50,6 +51,11 @@ const ObjectNavigates = [
 		id: 7,
 		path: '/register',
 		component: RegisterScreen,
+	},
+	{
+		id: 8,
+		path: '/cart',
+		component: Cart,
 	},
 ];
 

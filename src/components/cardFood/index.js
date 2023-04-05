@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import classes from './cardFood.module.css';
 
 const CardFood = (props) => {
-	const { name, price, id, link, description } = props.data;
+	const { name, price, id, link, description, img } = props.data;
 	return (
-		<div className={classes.wrapper + ' shadow-btn'}>
+		<div className={classes.wrapper}>
 			<Link to={'/' + id} className="flex flex-col">
 				<div className="flex sm:flex-row md:flex-col">
 					<figure>
-						<img src={link} alt="" />
+						<img src={link || img} alt="" />
 					</figure>
 					<div className={classes.infoItem}>
 						<div className={classes.detail_title + ' center_row'}>

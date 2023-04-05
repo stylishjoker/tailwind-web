@@ -4,7 +4,7 @@ const LayoutPanes = ({ children }) => {
 	return (
 		<div className="md:pt-[110px] xsm:pt-[74px]">
 			<Banner />
-			<div>{children}</div>
+			<>{children}</>
 		</div>
 	);
 };

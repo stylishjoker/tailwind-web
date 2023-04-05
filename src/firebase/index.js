@@ -4,10 +4,13 @@ import {
 	createUserWithEmailAndPassword,
 	updatePassword,
 	updateProfile,
+	signInWithPopup,
+	GoogleAuthProvider,
 } from 'firebase/auth';
 
 import { auth, db } from './firebase';
 
+const googleAuth = new GoogleAuthProvider();
 export const getData = async (name) => {
 	let newData;
 	await getDocs(collection(db, name)).then((querySnapshot) => {
@@ -43,32 +46,28 @@ export const deleData = async (name, id) => {
 		});
 };
 export const handleLogin = async (data) => {
-	console.log(data);
-	const users = await signInWithEmailAndPassword(
-		auth,
-		data.email,
-		data.password
-	);
-	return users.user;
+	let result,
+		error = null;
+	try {
+		result = await signInWithEmailAndPassword(auth, data.email, data.password);
+	} catch (e) {
+		error = e;
+	}
+	return { result: result.user, error };
 };
 export const handleRegister = async (data) => {
-	let value;
-	await createUserWithEmailAndPassword(auth, data.email, data.password)
-		.then((userCredential) => {
-			// Signed in
-			value = {
-				user: userCredential.user,
-			};
-			// ...
-		})
-		.catch((error) => {
-			value = {
-				errorCode: error.code,
-				errorMessage: error.message,
-			};
-			// ..
-		});
-	return value;
+	let result,
+		error = null;
+	try {
+		result = await createUserWithEmailAndPassword(
+			auth,
+			data.email,
+			data.password
+		);
+	} catch (e) {
+		error = e;
+	}
+	return { result: result.user, error };
 };
 export const handlePassword = (data) => {
 	var value = '';
@@ -82,3 +81,14 @@ export const handlePassword = (data) => {
 
 	return value;
 };
+export async function signInGoogle() {
+	let result = null,
+		error = null;
+	try {
+		result = await signInWithPopup(auth, googleAuth);
+	} catch (e) {
+		error = e;
+	}
+
+	return { result, error };
+}

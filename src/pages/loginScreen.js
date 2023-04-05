@@ -1,26 +1,24 @@
 import { useState } from 'react';
-import ReactFacebookLogin from 'react-facebook-login';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import classes from './login.module.css';
 import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
-import { handleLogin } from '../firebase';
+import { handleLogin, signInGoogle } from '../firebase';
 import { isPassword, isEmail } from '../validation';
 import { setUser } from '../feature/user';
 import { setToastMessage } from '../feature/operate';
 
 const LoginScreen = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [show, setShow] = useState(false);
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const [errorEmail, setErrorEmail] = useState();
 	const [errorPassword, setErrorPassword] = useState();
-	const componentClick = (data) => {
-		dispatch(setUser(data));
-	};
+
 	const Login = async () => {
 		setErrorPassword(isPassword(password));
 		setErrorEmail(isEmail(email));
@@ -29,12 +27,14 @@ const LoginScreen = () => {
 				email: email,
 				password: password,
 			};
-			const user = await handleLogin(newData);
-			if (user) {
-				dispatch(setUser(user));
+			const { result, error } = await handleLogin(newData);
+			if (!error) {
+				console.log(result);
+				dispatch(setUser(result));
 				dispatch(
 					setToastMessage({ type: 'susses', title: 'Đăng nhập thành công' })
 				);
+				navigate('/menuScreen');
 			}
 			dispatch(
 				setToastMessage({
@@ -45,6 +45,12 @@ const LoginScreen = () => {
 		}
 	};
 
+	const signinWithGooogle = () => {
+		const { result, error } = signInGoogle();
+		if (!error) {
+			dispatch(setUser(result));
+		}
+	};
 	return (
 		<LayoutPanes>
 			<div className="container flex m-auto min-h-screen">
@@ -115,16 +121,12 @@ const LoginScreen = () => {
 							<div className="mt-[20px] text-[14px]">
 								<h5>Hoặc tiếp tục với</h5>
 							</div>
-							<div className="w-[100%] relative overflow-hidden pb-[10px]">
-								<ReactFacebookLogin
-									appId="1295307291063299"
-									onClick={componentClick}
-									fields="name,email,accessToken,id,picture"
-									textButton="Đăng nhập bằng facebook"
-									cssClass={classes.facebook}
-								/>
-								<i className={classes.iconFB}></i>
-							</div>
+							<NewButton
+								text="Đăng nhập với google"
+								bg="white"
+								color="text-black"
+								callback={signinWithGooogle}
+							/>
 						</div>
 						<div className="center_col">
 							<p className={classes.register}>

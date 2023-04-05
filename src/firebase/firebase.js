@@ -20,4 +20,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const BASE_URL = 'https://kfc-project-1292f-default-rtdb.firebaseio.com';
 export default app;

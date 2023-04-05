@@ -23,7 +23,7 @@ const Option = (props) => {
 				}>
 				Bắt đầu đặt hàng
 			</Link>
-			<Link to={userToken.token ? '/user' : '/login'}>
+			<Link to={userToken.accessToken ? '/user' : '/login'}>
 				<LogoUser />
 			</Link>
 			<Link to={'/cart'} className={`${classes.cart}` + ` logo_cart`}></Link>

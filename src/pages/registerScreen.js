@@ -1,39 +1,39 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
-import ReactFacebookLogin from 'react-facebook-login';
-import { Link } from 'react-router-dom';
-
 import classes from './login.module.css';
 import LayoutPanes from '../layout/layoutPane';
 import NewButton from '../components/newButton';
 import { handleRegister } from '../firebase';
 
 const RegisterScreen = () => {
+	const navigate = useNavigate();
+
 	const [show, setShow] = useState(false);
 	const [user, setUser] = useState(false);
-	const [error, setError] = useState('');
+	const [errorValidate, setErrorValidate] = useState('');
 
 	const accountRef = useRef();
 	const passwordRef = useRef();
 	const confirmPasswordRef = useRef();
 
-	const componentClick = (data) => {};
 	const Login = async () => {
 		if (passwordRef.current.value == confirmPasswordRef.current.value) {
 			const newData = {
 				email: accountRef.current.value,
 				password: passwordRef.current.value,
 			};
-			const value = await handleRegister(newData);
-			if (value.user) {
-				console.log(value.user);
+			const { error, result } = await handleRegister(newData);
+			if (!error) {
+				navigate('/login');
+				console.log(result);
 			}
 		} else {
-			setError('Mật khẩu nhập lại không chính xác');
+			setErrorValidate('Mật khẩu nhập lại không chính xác');
 		}
 	};
 	return (
 		<LayoutPanes>
-			<div className="container flex m-auto h-[100vh]">
+			<div className="container flex m-auto min-h-[100vh]">
 				<div className={classes.banner}>
 					<img
 						src="https://static.kfcvietnam.com.vn/images/web/signin/lg/signin.jpg?v=gdZwJL"
@@ -64,7 +64,7 @@ const RegisterScreen = () => {
 							/>
 						</div>
 					</form>
-					{error ? <span>{error}</span> : <></>}
+					{errorValidate ? <span>{errorValidate}</span> : <></>}
 				</div>
 			</div>
 		</LayoutPanes>
